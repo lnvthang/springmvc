@@ -13,22 +13,30 @@
     </bean>
 
     <!-- JDBC -->
-<!--    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">-->
-<!--        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>-->
-<!--        <property name="url" value="jdbc:mysql://localhost:3306/yourdbname"/>-->
-<!--        <property name="username" value="yourusername"/>-->
-<!--        <property name="password" value="yourpassword"/>-->
-<!--    </bean>-->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/localhostdb"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
 
-<!--    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">-->
-<!--        <property name="dataSource" ref="dataSource"/>-->
-<!--    </bean>-->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
 
     <!-- Login -->
-    <bean id="loginController" class="com.springmvc.controller.LoginController" />
-    <bean id="loginFacadeImpl" class="com.springmvc.facade.impl.LoginFacadeImpl" />
-    <bean id="loginServiceImpl" class="com.springmvc.service.impl.LoginServiceImpl" />
-    <bean id="loginDaoImpl" class="com.springmvc.dao.impl.LoginDaoImpl" />
-    <bean id="loginModel" class="com.springmvc.model.UserModel" />
+    <bean id="loginController" class="main.com.springmvc.controller.LoginController" />
+    <bean id="loginFacadeImpl" class="main.com.springmvc.facade.impl.LoginFacadeImpl" />
+    <bean id="loginServiceImpl" class="main.com.springmvc.service.impl.LoginServiceImpl" />
+    <bean id="loginDaoImpl" class="main.com.springmvc.dao.impl.LoginDaoImpl" />
+    <bean id="loginModel" class="main.com.springmvc.model.UserModel" />
+
+    <!-- Home -->
+    <bean id="HomeController" class="main.com.springmvc.controller.HomeController" />
+    <bean id="HomeFacadeImpl" class="main.com.springmvc.facade.impl.HomeFacadeImpl" />
+    <bean id="HomeServiceImpl" class="main.com.springmvc.service.impl.HomServiceImpl" />
+    <bean id="HomeDaoImpl" class="main.com.springmvc.dao.impl.HomeDaoImpl" />
+
+    <bean id="query" class="main.com.springmvc.util.Query" />
 
 </beans>

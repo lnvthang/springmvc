@@ -1,4 +1,4 @@
-package com.springmvc.controller;
+package main.com.springmvc.controller;
 
 import com.springmvc.facade.ILoginFacade;
 import com.springmvc.util.Util;

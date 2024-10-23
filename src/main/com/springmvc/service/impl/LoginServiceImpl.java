@@ -1,4 +1,4 @@
-package com.springmvc.service.impl;
+package main.com.springmvc.service.impl;
 
 import com.springmvc.dao.ILoginDao;
 import com.springmvc.service.ILoginService;

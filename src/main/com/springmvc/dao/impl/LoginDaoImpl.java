@@ -1,4 +1,4 @@
-package com.springmvc.dao.impl;
+package main.com.springmvc.dao.impl;
 
 import com.springmvc.dao.ILoginDao;
 
