@@ -19,9 +19,13 @@ public class HomeDaoImpl implements IHomeDao {
 
     @Override
     public List<UserModel> getListUser() {
-//        Map<Integer, String> parameters = new HashMap<>();
-//        parameters.put(1, "admin");
-//        return query.executeQuery(GET_USER_BY_SEARCH, null, UserModel.class);
-        return query.executeQuery(GET_USER_LIST, null, UserModel.class);
+        return query.executeQueryList(GET_USER_LIST, null, UserModel.class);
+    }
+
+    @Override
+    public UserModel getUserBySearch() {
+        Map<Integer, String> parameters = new HashMap<>();
+        parameters.put(1, "admin");
+        return query.executeQueryObject(GET_USER_BY_SEARCH, parameters, UserModel.class);
     }
 }

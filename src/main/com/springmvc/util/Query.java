@@ -17,7 +17,7 @@ public class Query {
         this.dataSource = dataSource;
     }
 
-    public <T> List<T> executeQuery(String sql, Map<Integer, String> parameters, Class<T> typeClass) {
+    public <T> List<T> executeQueryList(String sql, Map<Integer, String> parameters, Class<T> typeClass) {
         List<T> outputList = null;
         ResultSet resultSet = null;
         try (Connection connection = dataSource.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -35,6 +35,26 @@ public class Query {
         }
 
         return outputList;
+    }
+
+    public <T> T executeQueryObject(String sql, Map<Integer, String> parameters, Class<T> typeClass) {
+        T outputObject = null;
+        ResultSet resultSet = null;
+        try (Connection connection = dataSource.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            if (parameters != null) {
+                for (Map.Entry<Integer, String> entry : parameters.entrySet()) {
+                    preparedStatement.setString(entry.getKey(), entry.getValue());
+                }
+            }
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet != null) {
+                outputObject = mapResultSetToListObject(resultSet, typeClass).get(0);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return outputObject;
     }
 
 
